@@ -131,11 +131,14 @@ def _recommendation(risk_label: str) -> str:
     return recommendations[risk_label]
 
 
-def _render_prediction(prediction: Dict[str, Any]) -> None:
-    """Render prediction probability, risk label, and recommendation."""
+def _render_prediction(prediction: Dict[str, Any], chart_key: str = "default") -> None:
     probability = prediction[config.CHURN_PROBABILITY_KEY]
     risk_label = prediction[config.RISK_LABEL_KEY]
-    st.plotly_chart(_probability_gauge(probability), use_container_width=True)
+    st.plotly_chart(
+        _probability_gauge(probability), 
+        use_container_width=True,
+        key=f"gauge_{chart_key}"
+    )
     st.markdown(
         f"<h3 style='color: {_risk_color(probability)}'>{risk_label} Risk</h3>",
         unsafe_allow_html=True,
@@ -183,7 +186,7 @@ def _render_what_if(customer_input: Dict[str, Any]) -> None:
         )
         st.session_state[config.WHAT_IF_LAST_INPUT_KEY] = input_signature
 
-    _render_prediction(prediction)
+    _render_prediction(prediction, chart_key="what_if")
     trend_df = pd.DataFrame(history)
     if not trend_df.empty:
         figure = px.line(
@@ -216,7 +219,7 @@ def main() -> None:
         if st.button(config.CALCULATE_RISK_BUTTON):
             try:
                 prediction = predict_churn(risk_input)
-                _render_prediction(prediction)
+                _render_prediction(prediction, chart_key="risk_calculator")
             except (FileNotFoundError, ValueError, AttributeError) as error:
                 st.error(str(error))
 
