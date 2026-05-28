@@ -13,16 +13,16 @@ env/
 .venv
 
 # Data Files (sensitive/large)
-data/churn.csv
-data/*.csv
-data/*.xlsx
-data/*.json
+# data/churn.csv
+# data/*.csv
+# data/*.xlsx
+# data/*.json
 
 # Trained Models & Artifacts
-models/*.pkl
-artifacts/*.pkl
-artifacts/*.png
-artifacts/*.csv
+# models/*.pkl
+# artifacts/*.pkl
+# artifacts/*.png
+# artifacts/*.csv
 
 # Jupyter Notebooks Checkpoints
 .ipynb_checkpoints/
