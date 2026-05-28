@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.py[cod]
+
+# Virtual Environments
+venv/
+env/
+.env
+.venv
+
+# Data Files (sensitive/large)
+data/churn.csv
+data/*.csv
+data/*.xlsx
+data/*.json
+
+# Trained Models & Artifacts
+models/*.pkl
+artifacts/*.pkl
+artifacts/*.png
+artifacts/*.csv
+
+# Jupyter Notebooks Checkpoints
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE & Editor
+.vscode/
+.idea/
+*.suo
+*.swp
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Docker
+.dockerignore
+
+# Environment Variables
+.env
+.env.local
+.env.production
+
+# Distribution / Build
+dist/
+build/
+*.egg-info/
+
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+
+# MLflow
+mlruns/
+mlartifacts/
