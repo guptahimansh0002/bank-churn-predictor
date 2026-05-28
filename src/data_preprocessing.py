@@ -84,7 +84,7 @@ def encode_categorical(
 
     transformed_df = df.copy()
     if fit:
-        encoder = OneHotEncoder(drop="first", handle_unknown="ignore", sparse=False)
+        encoder = OneHotEncoder(drop="first", handle_unknown="ignore", sparse_output=False)
         encoded_values = encoder.fit_transform(transformed_df[CATEGORICAL_COLS])
         _ensure_parent_dir(ENCODER_PATH)
         joblib.dump(encoder, ENCODER_PATH)
